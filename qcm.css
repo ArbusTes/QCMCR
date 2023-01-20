@@ -1,0 +1,181 @@
+body{
+	text-align: center;
+	color: #2d266f;
+}
+
+#titre{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 1% 0;
+	font-size: 60px;
+	width: 80%;
+}
+
+#titre img {max-width:40px;max-height:60px;}
+
+#outils{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#titreQuestionnaire, #titreQuestionnaire2{
+	width: 60%;
+	font-size: 26px;
+	text-align: center;
+	margin: 5px auto;
+	min-width: 300px;
+	border: 2px solid #2d266f;;
+	border-radius: 50px;
+	outline: none;
+	background-color:white;
+}
+
+#allQuestions, #allQuestions2{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 100%;
+	margin: 20px 0;
+	align-items: center;
+}
+
+.modifier_enlever_question{
+	cursor: pointer;
+	width: 30px;
+	margin: 5px 0;
+}
+
+.question{
+	padding: 10px;
+	border: 1px solid #2d266f;
+	min-width: 250px;
+	max-width: 550px;
+	background-color: #dcfdf7;;
+}
+
+.question_titre{
+	font-size: 24px;
+	text-align: center;
+}
+
+.question_reponses{
+	margin-top: 5%;
+	font-size: 20px;
+	text-align:left;
+}
+
+.numero {
+	font-size:18px;
+	font-weight:bold;
+}
+
+input[type="radio"], input[type="checkbox"], label{
+	cursor: pointer;
+	margin: 5px;
+	display: inline-block;
+}
+
+button{
+	font-size:20px;
+	padding:10px;
+	margin:10px;
+}
+
+button:not(#ajouterQuestion):not(#ajouterReponse):not(#thisAjouterReponse){
+	cursor: pointer;
+	border-radius: 10px;
+	border: none;
+	outline: none;
+	/*background-image: radial-gradient(rgb(255,255,255), rgb(255,255,255), rgb(200,200,200));*/
+	background: #e9e813;	
+	color: #2d266f;
+}
+
+button:hover:not(#ajouterQuestion):not(#ajouterReponse):not(#thisAjouterReponse){
+	background: #80e5ce;
+}
+
+button:not(#ajouterQuestion):not(#ajouterReponse):not(#thisAjouterReponse):disabled{
+	border-color: rgb(120,120,120);
+	color: rgb(120,120,120);
+}
+button:not(#ajouterQuestion):not(#ajouterReponse):not(#thisAjouterReponse):hover:disabled{
+	background: #e9e813;
+}
+
+#ajouterQuestion, #ajouterReponse, #thisAjouterReponse{
+	cursor: pointer;
+	width: 50px;
+	height: 50px;
+	margin:20px;
+}
+
+#ajouterReponse, #thisAjouterReponse{
+	font-size: 22px;
+	width: 30px;
+	height: 30px;
+}
+
+#creerQuestionPanel, #modifierQuestionPanel{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0,0.4);
+}
+
+#creerQuestion, #annulerQuestion, #thisAnnulerQuestion, #enregistrerQuestion{
+	font-size: 20px;
+	width: 110px;
+}
+
+#newQuestion, #thisQuestion{
+	display: flex;
+	position: absolute;
+	width: 60vw;
+	top: 0vh;
+	left: calc(20vw - 2vw);
+	border-radius: 10px;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	border: 2px solid #2d266f;
+	background-color: #dcfdf7;
+	overflow: auto;
+	padding: 2vw;
+	/*background-image: radial-gradient(rgb(255,255,255), rgb(200,200,200), rgb(150,150,150), rgb(100,100,100));*/
+}
+
+#titreQuestion, #thisTitreQuestion{
+	width: 100%;
+	font-size: 22px;
+	text-align: center;
+	border: 2px solid black;
+	border-radius: 20px;
+	outline: none;
+}
+
+#reponsesContainer, #thisReponsesContainer{
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin: 20px 0;
+	width: 100%;
+}
+
+#tester{
+	font-size: 26px;
+	padding: 10px;
+	cursor: pointer;
+	min-width: 180px;
+}
+
+@media only screen and (max-width: 600px) {
+	#newQuestion, #thisQuestion {
+		width: calc(96vw - 12px);
+		left: 4px;
+	}
+}

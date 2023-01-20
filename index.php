@@ -12,11 +12,12 @@ $outil=get_outil($_SESSION['outil_id']);?>
 <body>
 	<?php affichage_titre_et_liens($outil['outil_nom'],$retour,"",0,NULL,NULL,$dir_rel);?>
 	<div id="liens">
-			<button><input id="choisir" style="display: none;" type="file" accept=".html"><label for="choisir" style="width: 100%;margin: 2px;">Ouvrir</label></button>
+			<button><input id="choisir" style="display: none;" type="file" accept=".html, .htm"><label for="choisir" style="width: 100%;margin: 2px;">Ouvrir</label></button>
 			
 			<button id="enregistrer">Enregistrer</button>
 	</div>
 	<input type="text" id="titreQuestionnaire" placeholder="Titre du questionnaire" autofocus>
+	<textarea id="description" placeholder="Description (optionnel)"></textarea>
 	<div id="allQuestions">
 		<img id="ajouterQuestion" src="add.png">
 	</div>

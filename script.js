@@ -207,7 +207,7 @@
 	var choisir = document.getElementById('choisir');
 	var enregistrer = document.getElementById('enregistrer');
 	// Variables
-	var arrayQuestions = [], arrayReponses = [], idQMode, questionnaire = '', test_questionnaire='', titreQuestionnaire = '', fileTxt = '';
+	var arrayQuestions = [], arrayReponses = [], idQMode, questionnaire = '', test_questionnaire='', titreQuestionnaire = '', description = '', fileTxt = '';
 
 	tester.addEventListener('click', function(){
 		let verif = verifierQuestionnaire();
@@ -357,6 +357,10 @@
 	}
 
 	function saveFile(){
+		if(document.getElementById('titreQuestionnaire').value == ''){
+			alert('Tu dois ajouter un titre.');
+			return;
+		}
 		updateQuestionnaire();
 
 		var input = document.getElementById("input");
@@ -401,6 +405,7 @@
 		if (txt=='') recep.innerHTML = stripslashes(fileTxt);
 		else recep.innerHTML = stripslashes(txt);
 		var titre = document.getElementById('titreQuestionnaire2');
+		var desc = document.getElementById('description2');
 		if(titre == null){
 			alert('Fichier invalide.');
 			return;
@@ -409,6 +414,7 @@
 		var allQuestions2 = document.getElementById('allQuestions2');
 		var arrayDivQuestions = allQuestions2.getElementsByClassName('question');
 		document.getElementById('titreQuestionnaire').value = titre.innerHTML;
+		document.getElementById('description').value = desc.innerHTML;
 		let fin = arrayDivQuestions.length;
 		for(let i = 0 ; i < fin ; i++){
 			let quest = new Question(arrayDivQuestions[0].getElementsByClassName('question_titre')[0].innerHTML);
@@ -444,6 +450,7 @@
 
 	function cleanBoard(){
 		document.getElementById('titreQuestionnaire').value = '';
+		document.getElementById('description').value = '';
 		let fin = arrayQuestions.length;
 		for(let i = 0 ; i < fin ; i++)
 			arrayQuestions[0].butDel.click();
@@ -453,6 +460,7 @@
 
 function updateQuestionnaire(){
 	titreQuestionnaire = document.getElementById('titreQuestionnaire').value;
+	description = document.getElementById('description').value;
 	questionnaire_debut =
 		'<html><head>'+
 			'<meta charset="UTF-8">'+
@@ -466,12 +474,13 @@ function updateQuestionnaire(){
 	test_questionnaire+='<div style="text-align:center;font-size:32px;color:#d94b05;">Vérifie l\'orthographe et les bonnes réponses !</div>';
 
 	questionnaire_fin='<div style="display:flex;flex-direction:column;justify-content:center;">'+
-	'<div id="titreQuestionnaire2">'+titreQuestionnaire+'</div>';
+	'<div id="titreQuestionnaire2">'+titreQuestionnaire+'</div>'+
+	'<div id="description2">'+description+'</div>';
 	if (hid!=0) questionnaire_fin+='<div id="login_et_classe">'+'<a href="https://arbustes.net/profil.php?hid='+hid+'" target="_top">'+login+'</a> '+classe+'</div>';
 	questionnaire_fin+='</div><div id="allQuestions2">';
 
 	for(let i = 0 ; i < arrayQuestions.length ; i++){
-		questionnaire_fin += '<div><div class="numero">'+(i+1)+'°)</div><div class="question" style="margin: 2% 2%">';
+		questionnaire_fin += '<div style="margin: 2% 2%;"><div class="numero">'+(i+1)+'°)</div><div class="question">';
 		questionnaire_fin += arrayQuestions[i].question.innerHTML;
 		questionnaire_fin += '</div></div>';
 	}

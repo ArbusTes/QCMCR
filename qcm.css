@@ -32,6 +32,17 @@ body{
 	background-color:white;
 }
 
+#description, #description2{
+	display: block;
+	text-align: center;
+	width: 30%;
+	height: 64px;
+	margin: 5px auto;
+	resize: none;
+	font: small-caption;
+	overflow-wrap: break-word;
+}
+
 #allQuestions, #allQuestions2{
 	display: flex;
 	flex-wrap: wrap;

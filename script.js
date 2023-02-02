@@ -297,9 +297,9 @@
 	function checkkeypress(event){
 		var x = event.which || event.keyCode;
 		if(x == 13){
-			if(creerQuestionPanel.style.display == 'none' && modifierQuestionPanel.style.display == 'none')
+			/*if(creerQuestionPanel.style.display == 'none' && modifierQuestionPanel.style.display == 'none')
 				ajouter.click(); // ajoute une question
-			else if(creerQuestionPanel.style.display != 'none' && modifierQuestionPanel.style.display == 'none')
+			else */if(creerQuestionPanel.style.display != 'none' && modifierQuestionPanel.style.display == 'none')
 				ajouterReponse.click(); // ajoute une réponse
 			else if(modifierQuestionPanel.style.display != 'none')
 				thisAjouterReponse.click(); // ajoute une réponse
@@ -405,7 +405,8 @@
 		if (txt=='') recep.innerHTML = stripslashes(fileTxt);
 		else recep.innerHTML = stripslashes(txt);
 		var titre = document.getElementById('titreQuestionnaire2');
-		var desc = document.getElementById('description2');
+		var desc = document.getElementById('description2').innerHTML;
+		desc = desc.replace(/\r?<br>/g, '\n');
 		if(titre == null){
 			alert('Fichier invalide.');
 			return;
@@ -414,7 +415,7 @@
 		var allQuestions2 = document.getElementById('allQuestions2');
 		var arrayDivQuestions = allQuestions2.getElementsByClassName('question');
 		document.getElementById('titreQuestionnaire').value = titre.innerHTML;
-		document.getElementById('description').value = desc.innerHTML;
+		document.getElementById('description').value = desc;
 		let fin = arrayDivQuestions.length;
 		for(let i = 0 ; i < fin ; i++){
 			let quest = new Question(arrayDivQuestions[0].getElementsByClassName('question_titre')[0].innerHTML);
@@ -461,6 +462,9 @@
 function updateQuestionnaire(){
 	titreQuestionnaire = document.getElementById('titreQuestionnaire').value;
 	description = document.getElementById('description').value;
+	description = description.replace(/\r?\n/g, '<br>');
+	var nbLines = description.split('<br>').length;
+	console.log(nbLines);
 	questionnaire_debut =
 		'<html><head>'+
 			'<meta charset="UTF-8">'+
@@ -475,7 +479,7 @@ function updateQuestionnaire(){
 
 	questionnaire_fin='<div style="display:flex;flex-direction:column;justify-content:center;">'+
 	'<div id="titreQuestionnaire2">'+titreQuestionnaire+'</div>'+
-	'<div id="description2">'+description+'</div>';
+	'<div id="description2" style="height:'+(nbLines*23.34)+'px;'+(description.length==0?'border:none;background:none;':'')+'">'+description+'</div>';
 	if (hid!=0) questionnaire_fin+='<div id="login_et_classe">'+'<a href="https://arbustes.net/profil.php?hid='+hid+'" target="_top">'+login+'</a> '+classe+'</div>';
 	questionnaire_fin+='</div><div id="allQuestions2">';
 

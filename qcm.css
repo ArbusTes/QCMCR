@@ -1,6 +1,16 @@
+html{
+	background-color: rgba(220, 253, 247, 0.1);
+}
+
 body{
+	background-color: rgba(220, 253, 247, 0.1);
 	text-align: center;
 	color: #2d266f;
+}
+
+#titre_et_liens{ /* Overwritten to change background */
+	background-color: rgba(220, 253, 247, 0.1);
+	border-color: rgba(220, 253, 247, 0.1);
 }
 
 #titre{
@@ -22,11 +32,11 @@ body{
 
 #titreQuestionnaire, #titreQuestionnaire2{
 	width: 60%;
-	font-size: 26px;
+	font-size: 36px;
 	text-align: center;
 	margin: 5px auto;
 	min-width: 300px;
-	border: 2px solid #2d266f;;
+	border: 2px solid #2d266f;
 	border-radius: 50px;
 	outline: none;
 	background-color:white;
@@ -35,12 +45,17 @@ body{
 #description, #description2{
 	display: block;
 	text-align: center;
-	width: 30%;
-	height: 64px;
+	width: 40%;
+	min-width: 300px;
+	height: 70px;
 	margin: 5px auto;
 	resize: none;
-	font: small-caption;
+	font-family: "Arial";
+	font-size: 20px;
 	overflow-wrap: break-word;
+	border-radius: 10px;
+	border: 1px solid #2d266f;
+	background-color: white;
 }
 
 #allQuestions, #allQuestions2{
@@ -63,7 +78,7 @@ body{
 	border: 1px solid #2d266f;
 	min-width: 250px;
 	max-width: 550px;
-	background-color: #dcfdf7;;
+	background-color: #dcfdf7;
 }
 
 .question_titre{

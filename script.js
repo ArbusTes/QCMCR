@@ -405,8 +405,11 @@
 		if (txt=='') recep.innerHTML = stripslashes(fileTxt);
 		else recep.innerHTML = stripslashes(txt);
 		var titre = document.getElementById('titreQuestionnaire2');
-		var desc = document.getElementById('description2').innerHTML;
-		desc = desc.replace(/\r?<br>/g, '\n');
+		var desc = "";
+		if(document.getElementById('description2') != null){
+  			desc = document.getElementById('description2').innerHTML;
+  			desc = desc.replace(/\r?<br>/g, '\n');
+		}
 		if(titre == null){
 			alert('Fichier invalide.');
 			return;
@@ -464,7 +467,6 @@ function updateQuestionnaire(){
 	description = document.getElementById('description').value;
 	description = description.replace(/\r?\n/g, '<br>');
 	var nbLines = description.split('<br>').length;
-	console.log(nbLines);
 	questionnaire_debut =
 		'<html><head>'+
 			'<meta charset="UTF-8">'+
